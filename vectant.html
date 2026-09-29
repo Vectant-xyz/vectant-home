@@ -1,0 +1,593 @@
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500;1,9..144,600&family=Hanken+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<title>Vectant</title>
+<style>
+  /* Vectant — "Certificate of Reserves". Committed light/paper world. */
+  :root{
+    color-scheme: light;
+    --paper:#ECEDE6;
+    --paper-2:#E5E6DD;
+    --card:#F6F6F0;
+    --ink:#17180F;
+    --ink-2:#3C3E31;
+    --muted:#6C6E5E;
+    --faint:#8D8F7F;
+    --rule:#CBCCBD;
+    --rule-strong:#B7B9A6;
+    --teal:#0E6B57;
+    --teal-deep:#0A4C3E;
+    --teal-ghost:rgba(14,107,87,.09);
+    --brass:#9A7B3F;
+    --brass-soft:#B79A5F;
+    --maxw:1140px;
+    font-family:'Hanken Grotesk',system-ui,-apple-system,'Segoe UI',sans-serif;
+  }
+  *{box-sizing:border-box}
+  html,body{background:var(--paper)}
+  body{
+    margin:0;color:var(--ink);font-size:16.5px;line-height:1.62;
+    -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;overflow-x:hidden;
+  }
+  /* faint background guilloche canvas sits behind everything */
+  #bg{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;opacity:.9}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px;position:relative;z-index:1}
+  a{color:inherit;text-decoration:none}
+  p{margin:0}
+  h1,h2,h3{margin:0;font-family:'Fraunces',Georgia,serif;font-weight:600;line-height:1.04;letter-spacing:-.012em;text-wrap:balance}
+  .serif{font-family:'Fraunces',Georgia,serif}
+  .ital{font-style:italic;font-weight:600}
+  .mono{font-family:'IBM Plex Mono',monospace;font-weight:500;letter-spacing:.12em;text-transform:uppercase;font-size:11px}
+  .teal{color:var(--teal)}
+  .num{font-variant-numeric:tabular-nums;font-family:'IBM Plex Mono',monospace}
+
+  /* top document rule */
+  .topbar{border-top:2px solid var(--ink)}
+  .topbar .inner{border-top:1px solid var(--rule-strong)}
+
+  /* nav */
+  header.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:40;
+    background:rgba(236,237,230,.82);backdrop-filter:blur(8px);border-bottom:1px solid var(--rule)}
+  .nav-in{max-width:var(--maxw);margin:0 auto;padding:15px 28px;display:flex;align-items:center;gap:30px}
+  .brand{display:flex;align-items:center;gap:11px;font-family:'Fraunces',serif;font-weight:700;font-size:22px;letter-spacing:.01em}
+  .brand svg{display:block}
+  .nav-links{display:flex;gap:28px;margin-left:auto}
+  .nav-links a{font-size:14.5px;color:var(--ink-2);transition:color .16s}
+  .nav-links a:hover{color:var(--teal)}
+  .nav-cta{font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;
+    padding:10px 16px;border:1px solid var(--ink);color:var(--ink);transition:.16s}
+  .nav-cta:hover{background:var(--ink);color:var(--paper)}
+  .burger{display:none;margin-left:auto;background:none;border:1px solid var(--rule-strong);color:var(--ink);padding:8px 11px;cursor:pointer;font-size:16px}
+
+  /* buttons */
+  .btn{display:inline-flex;align-items:center;gap:9px;font-family:'IBM Plex Mono',monospace;font-size:12px;
+    letter-spacing:.06em;text-transform:uppercase;padding:14px 22px;cursor:pointer;transition:.16s;border:1px solid transparent}
+  .btn-primary{background:var(--teal);color:#F3F5EF;border-color:var(--teal)}
+  .btn-primary:hover{background:var(--teal-deep);border-color:var(--teal-deep)}
+  .btn-ghost{border-color:var(--ink);color:var(--ink)}
+  .btn-ghost:hover{background:var(--ink);color:var(--paper)}
+  .btn svg{width:14px;height:14px}
+
+  /* hero */
+  .hero{padding-block:70px 60px}
+  .hero-grid{display:grid;grid-template-columns:1.06fr .94fr;gap:60px;align-items:center}
+  .eyebrow{color:var(--brass);margin-bottom:26px;display:flex;align-items:center;gap:12px}
+  .eyebrow::after{content:"";height:1px;flex:1;background:var(--rule-strong);max-width:120px}
+  h1.head{font-size:clamp(40px,5.8vw,68px);font-weight:600;letter-spacing:-.02em}
+  h1.head .ital{color:var(--teal)}
+  .lede{color:var(--ink-2);font-size:clamp(16px,1.4vw,18.5px);max-width:40ch;margin-top:26px}
+  .hero-actions{display:flex;gap:14px;margin-top:34px;flex-wrap:wrap}
+  .attest{display:flex;flex-wrap:wrap;gap:10px 22px;margin-top:40px;padding-top:22px;border-top:1px solid var(--rule)}
+  .attest span{font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.04em;color:var(--muted);display:flex;align-items:center;gap:9px}
+  .attest span::before{content:"";width:6px;height:6px;background:var(--teal);transform:rotate(45deg);flex:none}
+
+  /* certificate card (signature moment) */
+  .cert{position:relative;background:var(--card);border:1px solid var(--rule-strong);
+    padding:30px 30px 26px;box-shadow:0 20px 50px -34px rgba(23,24,15,.55)}
+  .cert::before{content:"";position:absolute;inset:7px;border:1px solid var(--brass-soft);pointer-events:none;opacity:.55}
+  .corner{position:absolute;width:16px;height:16px;border:1.5px solid var(--brass);z-index:2}
+  .corner.tl{top:13px;left:13px;border-right:0;border-bottom:0}
+  .corner.tr{top:13px;right:13px;border-left:0;border-bottom:0}
+  .corner.bl{bottom:13px;left:13px;border-right:0;border-top:0}
+  .corner.br{bottom:13px;right:13px;border-left:0;border-top:0}
+  .cert-in{position:relative;z-index:1}
+  .cert-head{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-bottom:4px}
+  .cert-head .t{font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink)}
+  .cert-head .sn{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.08em;color:var(--faint)}
+  .cert-rule{height:1px;background:var(--rule-strong);margin:12px 0 18px}
+  .cert-inst{display:flex;align-items:flex-end;justify-content:space-between;gap:14px;margin-bottom:20px}
+  .cert-inst .nm{font-family:'Fraunces',serif;font-weight:700;font-size:34px;line-height:1}
+  .cert-inst .nm small{display:block;font-family:'Hanken Grotesk',sans-serif;font-weight:500;font-size:12.5px;color:var(--muted);letter-spacing:0;margin-top:6px;text-transform:none}
+  .stamp{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.14em;color:var(--teal);
+    border:1.5px solid var(--teal);padding:5px 9px;transform:rotate(-4deg);opacity:.9;white-space:nowrap}
+  .cert-rows{display:flex;flex-direction:column}
+  .crow{display:flex;justify-content:space-between;align-items:center;padding:11px 0;border-bottom:1px dotted var(--rule-strong)}
+  .crow .k{font-size:13px;color:var(--ink-2)}
+  .crow .v{font-family:'IBM Plex Mono',monospace;font-size:14px;color:var(--ink)}
+  .crow .v.big{font-size:16px;color:var(--teal);font-weight:500}
+  .cert-foot{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-top:20px}
+  .sig{flex:1}
+  .sig .sg{font-family:'Fraunces',serif;font-style:italic;font-weight:600;font-size:21px;color:var(--ink);line-height:1}
+  .sig .sl{border-top:1px solid var(--ink);margin-top:7px;padding-top:5px;font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--faint)}
+  .seal{position:relative;width:96px;height:96px;flex:none}
+  .seal canvas{position:absolute;inset:0;width:100%;height:100%}
+  .seal .sc{position:absolute;inset:0;display:grid;place-items:center;text-align:center}
+  .seal .sc b{font-family:'IBM Plex Mono',monospace;font-size:8px;letter-spacing:.12em;color:var(--brass);line-height:1.5;text-transform:uppercase}
+  .cert-note{font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:.05em;color:var(--faint);margin-top:16px;text-align:center;text-transform:uppercase}
+
+  /* sections */
+  section{padding-block:60px;position:relative;z-index:1}
+  .band{background:var(--paper-2);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+  .sec-head{margin-bottom:44px;max-width:64ch}
+  .sec-head .mono{color:var(--brass);display:flex;align-items:center;gap:12px;margin-bottom:18px}
+  .sec-head .mono::after{content:"";height:1px;flex:1;background:var(--rule-strong);max-width:120px}
+  .sec-head h2{font-size:clamp(28px,3.8vw,44px);font-weight:600}
+  .sec-head p{color:var(--ink-2);margin-top:16px;font-size:17px;max-width:58ch}
+
+  /* thesis */
+  .thesis-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
+  .thesis{font-family:'Fraunces',serif;font-weight:500;font-size:clamp(23px,3vw,33px);line-height:1.22;letter-spacing:-.01em;max-width:22ch}
+  .thesis .ital{color:var(--teal)}
+
+  /* platform — engraved articles with monoline glyphs */
+  .arts{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid var(--ink)}
+  .art{padding:30px 26px 30px 0;border-right:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+  .art:last-child{border-right:0}
+  .art .gi{width:46px;height:46px;margin-bottom:20px}
+  .art .gi svg{width:46px;height:46px;stroke:var(--teal);fill:none;stroke-width:1.4}
+  .art h3{font-family:'Fraunces',serif;font-weight:600;font-size:21px;margin-bottom:11px}
+  .art p{color:var(--ink-2);font-size:14.5px}
+  @media(min-width:901px){.art{padding-left:26px}.art:first-child{padding-left:0}}
+
+  /* how it works */
+  .flow{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-bottom:40px;border-top:1px solid var(--ink)}
+  .step{padding:26px 22px 26px 0;border-right:1px solid var(--rule)}
+  .step:last-child{border-right:0}
+  @media(min-width:901px){.step{padding-left:22px}.step:first-child{padding-left:0}}
+  .step .ri{font-family:'Fraunces',serif;font-weight:700;font-size:26px;color:var(--brass);line-height:1;margin-bottom:14px}
+  .step h3{font-family:'Fraunces',serif;font-weight:600;font-size:17px;margin-bottom:8px}
+  .step p{color:var(--ink-2);font-size:13.5px}
+  .diagram{background:var(--card);border:1px solid var(--rule-strong);padding:28px 22px;position:relative}
+  .diagram::before{content:"";position:absolute;inset:6px;border:1px solid var(--brass-soft);opacity:.4;pointer-events:none}
+  .diagram svg{width:100%;height:auto;display:block;position:relative}
+
+  /* security */
+  .grid2{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid var(--rule-strong)}
+  .cell{padding:26px 24px;border-right:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+  .cell:nth-child(3n){border-right:0}
+  .cell:nth-last-child(-n+3){border-bottom:0}
+  .cell .ci{width:28px;height:28px;margin-bottom:15px}
+  .cell .ci svg{width:28px;height:28px;stroke:var(--teal);fill:none;stroke-width:1.4}
+  .cell h3{font-family:'Fraunces',serif;font-weight:600;font-size:16.5px;margin-bottom:9px}
+  .cell p{color:var(--ink-2);font-size:13.5px}
+
+  /* assets ledger */
+  .ledger-t{border:1px solid var(--ink);background:var(--card)}
+  .lhead{display:grid;grid-template-columns:1.5fr 1.6fr .9fr auto;gap:16px;padding:12px 22px;border-bottom:1px solid var(--ink);
+    font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--faint)}
+  .lrow{display:grid;grid-template-columns:1.5fr 1.6fr .9fr auto;gap:16px;align-items:center;padding:16px 22px;border-bottom:1px solid var(--rule)}
+  .lrow:last-child{border-bottom:0}
+  .lrow .nm{font-family:'Fraunces',serif;font-weight:600;font-size:17px}
+  .lrow .ds{font-size:13.5px;color:var(--ink-2)}
+  .lrow .rz{font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--ink-2)}
+  .st{justify-self:end;font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;
+    padding:5px 10px;border:1px solid var(--rule-strong);white-space:nowrap}
+  .st.live{color:var(--teal);border-color:var(--teal)}
+  .st.build{color:var(--brass);border-color:var(--brass-soft)}
+  .st.road{color:var(--faint)}
+  .st.part{color:var(--ink-2)}
+
+  /* split */
+  .split{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+  .panel{background:var(--card);border:1px solid var(--rule-strong);padding:32px 30px;position:relative}
+  .panel::before{content:"";position:absolute;inset:6px;border:1px solid var(--brass-soft);opacity:.35;pointer-events:none}
+  .panel .pin{position:relative}
+  .panel h3{font-family:'Fraunces',serif;font-weight:600;font-size:23px;margin:12px 0 14px}
+  .panel p{color:var(--ink-2);font-size:15px;margin-bottom:18px}
+  .checks{display:flex;flex-direction:column;gap:12px;margin-bottom:24px}
+  .check{display:flex;gap:11px;align-items:flex-start;font-size:14.5px;color:var(--ink)}
+  .check svg{width:16px;height:16px;stroke:var(--teal);fill:none;stroke-width:2.2;margin-top:4px;flex:none}
+  .venues{display:flex;flex-wrap:wrap;gap:9px}
+  .vn{font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:var(--ink-2);border:1px solid var(--rule-strong);padding:8px 12px}
+  .vn b{color:var(--ink);font-family:inherit;font-weight:500}
+
+  /* cta */
+  .cta{position:relative;border:2px solid var(--ink);background:var(--card);padding:60px 40px;text-align:center;overflow:hidden}
+  .cta canvas{position:absolute;inset:0;width:100%;height:100%;opacity:.14;pointer-events:none}
+  .cta .ci2{position:relative}
+  .cta h2{font-family:'Fraunces',serif;font-weight:600;font-size:clamp(30px,4.2vw,48px);max-width:20ch;margin:0 auto}
+  .cta p{color:var(--ink-2);max-width:48ch;margin:18px auto 0;font-size:16.5px}
+  .cta .hero-actions{justify-content:center}
+  .cline{font-family:'IBM Plex Mono',monospace;font-size:12.5px;color:var(--muted);margin-top:26px}
+  .cline b{color:var(--teal);font-family:inherit}
+
+  /* footer */
+  footer{border-top:2px solid var(--ink);background:var(--paper-2);padding-block:50px 40px;position:relative;z-index:1}
+  .foot-grid{display:grid;grid-template-columns:1.7fr 1fr 1fr 1fr;gap:32px;margin-bottom:38px}
+  .foot-brand p{color:var(--muted);font-size:13.5px;margin-top:14px;max-width:36ch}
+  .foot-col h4{font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--brass);margin:0 0 16px}
+  .foot-col a{display:block;color:var(--ink-2);font-size:14px;margin-bottom:11px}
+  .foot-col a:hover{color:var(--teal)}
+  .disc{border-top:1px solid var(--rule);padding-top:24px;color:var(--faint);font-size:11.5px;line-height:1.7;max-width:94ch}
+  .copy{margin-top:16px;font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.06em;color:var(--faint)}
+
+  @media (max-width:900px){
+    .hero-grid,.thesis-grid,.split{grid-template-columns:1fr;gap:40px}
+    .arts,.grid2{grid-template-columns:1fr 1fr}
+    .flow{grid-template-columns:1fr 1fr}
+    .art,.step{border-right:0;padding-left:0!important}
+    .art{padding-right:0}
+    .cell:nth-child(3n){border-right:1px solid var(--rule)}
+    .cell:nth-child(2n){border-right:0}
+    .foot-grid{grid-template-columns:1fr 1fr}
+  }
+  @media (max-width:600px){
+    .nav-links,.nav-cta{display:none}
+    .burger{display:block}
+    .arts,.grid2,.flow,.foot-grid{grid-template-columns:1fr}
+    .cell{border-right:0!important}
+    .lhead{display:none}
+    .lrow{grid-template-columns:1fr auto;gap:8px 12px;row-gap:6px}
+    .lrow .ds{grid-column:1 / -1;order:4}
+    .lrow .rz{grid-column:1 / -1;order:3;color:var(--faint)}
+    .cta{padding:40px 22px}
+  }
+  @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+  :focus-visible{outline:2px solid var(--teal);outline-offset:3px}
+</style>
+
+<canvas id="bg" aria-hidden="true"></canvas>
+
+<header class="nav">
+  <div class="nav-in">
+    <a class="brand" href="#top">
+      <svg width="30" height="30" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+        <rect x="2.5" y="2.5" width="27" height="27" rx="2" stroke="#0E6B57" stroke-width="1.5"/>
+        <rect x="6" y="6" width="20" height="20" rx="1" stroke="#9A7B3F" stroke-width="1"/>
+        <path d="M9.5 11 L16 21.5 L22.5 11" stroke="#0E6B57" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="16" cy="9" r="1.6" fill="#9A7B3F"/>
+      </svg>
+      Vectant
+    </a>
+    <nav class="nav-links">
+      <a href="#platform">Platform</a>
+      <a href="#how">How it works</a>
+      <a href="#security">Security</a>
+      <a href="#assets">Assets</a>
+      <a href="#issuers">Issuers</a>
+    </nav>
+    <a class="nav-cta" href="#contact">Talk to us</a>
+    <button class="burger" id="burger" aria-label="Menu">≡</button>
+  </div>
+</header>
+
+<a id="top"></a>
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div>
+        <div class="mono eyebrow">Wrapped-asset issuance · Canton Network</div>
+        <h1 class="head">A certificate of reserves, <span class="ital">for every asset on Canton.</span></h1>
+        <p class="lede">Vectant issues wrapped assets backed one to one by reserves held in independent multi-signature custody. Supply is reconciled against reserves continuously, and the proof is public.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#contact">Talk to us
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+          <a class="btn btn-ghost" href="#how">See how it works</a>
+        </div>
+        <div class="attest">
+          <span>Reserves in M-of-N custody</span>
+          <span>Registry on Canton, CIP-56</span>
+          <span>Public proof-of-reserve</span>
+          <span>Redeemable one to one</span>
+        </div>
+      </div>
+
+      <div class="cert" aria-label="Certificate of reserves, illustrative">
+        <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
+        <div class="cert-in">
+          <div class="cert-head">
+            <span class="t">Certificate of Reserves</span>
+            <span class="sn">SERIES cWETH · No. 000001</span>
+          </div>
+          <div class="cert-rule"></div>
+          <div class="cert-inst">
+            <div class="nm">cWETH<small>Wrapped Ether, issued on Canton</small></div>
+            <span class="stamp">✓ Reserves verified</span>
+          </div>
+          <div class="cert-rows">
+            <div class="crow"><span class="k">Circulating supply</span><span class="v num">1,842.5000</span></div>
+            <div class="crow"><span class="k">Reserves locked, source chain</span><span class="v num">1,842.5000</span></div>
+            <div class="crow"><span class="k">Backing ratio</span><span class="v big num">100.00%</span></div>
+            <div class="crow"><span class="k">Custody threshold</span><span class="v">4-of-7</span></div>
+          </div>
+          <div class="cert-foot">
+            <div class="sig">
+              <div class="sg">Vectant Registrar</div>
+              <div class="sl">Attested on-chain · CIP-56</div>
+            </div>
+            <div class="seal">
+              <canvas id="seal" aria-hidden="true"></canvas>
+              <div class="sc"><b>VECTANT<br>RESERVE<br>SEAL</b></div>
+            </div>
+          </div>
+          <p class="cert-note">Illustrative. Figures shown for layout.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="platform">
+  <div class="wrap">
+    <div class="thesis-grid">
+      <h2 class="thesis">Canton settles finance privately. Vectant makes the backing <span class="ital">a matter of record.</span></h2>
+      <div>
+        <p style="color:var(--ink-2);font-size:16.5px;max-width:54ch">A tokenized asset is only as good as its reserves. Vectant keeps the two jobs separate: reserves stay locked on the source chain under threshold custody, and the wrapped token lives on Canton with settlement finality and privacy. Every instrument carries a public certificate of reserves, so holders and venues can verify exactly what stands behind it.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="mono">The platform</span>
+      <h2>Issue, custody, verify</h2>
+      <p>Mint an asset, hold its reserves under distributed control, and let anyone confirm the backing.</p>
+    </div>
+    <div class="arts">
+      <div class="art">
+        <div class="gi"><svg viewBox="0 0 40 40"><circle cx="20" cy="20" r="15"/><path d="M20 5v30M5 20h30"/><circle cx="20" cy="20" r="6"/></svg></div>
+        <h3>Wrapped assets</h3>
+        <p>cWETH and cSOL first, then tokenized gold and securities. Each token is backed one to one, issued as a 10-decimal CIP-56 holding, and settles with Canton's built-in privacy.</p>
+      </div>
+      <div class="art">
+        <div class="gi"><svg viewBox="0 0 40 40"><rect x="8" y="17" width="24" height="16" rx="1.5"/><path d="M13 17v-4a7 7 0 0 1 14 0v4"/><circle cx="20" cy="25" r="2.2"/></svg></div>
+        <h3>Multi-signature custody</h3>
+        <p>Reserves sit in an M-of-N Safe on EVM or Squads on Solana. No single operator can move funds. The vault is non-upgradeable, with per-transaction and daily caps and a pause switch.</p>
+      </div>
+      <div class="art">
+        <div class="gi"><svg viewBox="0 0 40 40"><path d="M8 12h24M8 20h24M8 28h16"/><path d="M28 27l3 3 5-6"/></svg></div>
+        <h3>Issuance as a service</h3>
+        <p>List a token on Canton without building custody, compliance, or reward plumbing. Vectant runs the registry, the vault, and the Canton integration, and routes activity rewards to the venue.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="how">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="mono">How it works</span>
+      <h2>Lock, mint, verify, redeem</h2>
+      <p>Two mirrored thresholds, held by the same independent operators, govern both sides of the bridge.</p>
+    </div>
+    <div class="flow">
+      <div class="step"><div class="ri">I</div><h3>Lock</h3><p>Assets are deposited into the source-chain multisig vault. M-of-N operators confirm the deposit.</p></div>
+      <div class="step"><div class="ri">II</div><h3>Mint</h3><p>Vectant mints the wrapped asset one to one on Canton through a CIP-56 registry contract.</p></div>
+      <div class="step"><div class="ri">III</div><h3>Verify</h3><p>Circulating supply is reconciled against locked reserves. The certificate of reserves is public.</p></div>
+      <div class="step"><div class="ri">IV</div><h3>Redeem</h3><p>Burning the Canton token releases the reserve from the vault, gated by the same M-of-N threshold.</p></div>
+    </div>
+    <div class="diagram">
+      <svg viewBox="0 0 960 300" role="img" aria-label="Source-chain vault locks reserves; Vectant registry mints the wrapped asset on Canton; redemption burns and releases.">
+        <defs>
+          <marker id="af" markerWidth="10" markerHeight="10" refX="7" refY="5" orient="auto"><path d="M0 0 L8 5 L0 10 z" fill="#0E6B57"/></marker>
+          <marker id="ab" markerWidth="10" markerHeight="10" refX="7" refY="5" orient="auto"><path d="M0 0 L8 5 L0 10 z" fill="#9A7B3F"/></marker>
+        </defs>
+        <rect x="18" y="70" width="256" height="160" fill="none" stroke="#B7B9A6"/>
+        <rect x="24" y="76" width="244" height="148" fill="none" stroke="#B79A5F" stroke-opacity=".5"/>
+        <text x="44" y="106" fill="#9A7B3F" font-family="'IBM Plex Mono',monospace" font-size="11" letter-spacing="2">SOURCE CHAIN</text>
+        <text x="44" y="146" fill="#17180F" font-family="Fraunces,serif" font-weight="600" font-size="24">Multisig vault</text>
+        <text x="44" y="172" fill="#3C3E31" font-family="'Hanken Grotesk',sans-serif" font-size="13">Safe on EVM, Squads on Solana</text>
+        <text x="44" y="204" fill="#6C6E5E" font-family="'IBM Plex Mono',monospace" font-size="11" letter-spacing="1">M-OF-N LOCK</text>
+
+        <rect x="352" y="52" width="256" height="196" fill="none" stroke="#0E6B57"/>
+        <rect x="358" y="58" width="244" height="184" fill="none" stroke="#0E6B57" stroke-opacity=".35"/>
+        <text x="378" y="90" fill="#0E6B57" font-family="'IBM Plex Mono',monospace" font-size="11" letter-spacing="2">CANTON</text>
+        <text x="378" y="142" fill="#17180F" font-family="Fraunces,serif" font-weight="600" font-size="24">Vectant registry</text>
+        <text x="378" y="168" fill="#3C3E31" font-family="'Hanken Grotesk',sans-serif" font-size="13">CIP-56 mint and burn</text>
+        <text x="378" y="200" fill="#0E6B57" font-family="'IBM Plex Mono',monospace" font-size="11" letter-spacing="1">CERTIFICATE OF RESERVES</text>
+
+        <rect x="686" y="70" width="256" height="160" fill="none" stroke="#B7B9A6"/>
+        <rect x="692" y="76" width="244" height="148" fill="none" stroke="#B79A5F" stroke-opacity=".5"/>
+        <text x="712" y="106" fill="#9A7B3F" font-family="'IBM Plex Mono',monospace" font-size="11" letter-spacing="2">HOLDER · VENUE</text>
+        <text x="712" y="146" fill="#17180F" font-family="Fraunces,serif" font-weight="600" font-size="24">Wrapped asset</text>
+        <text x="712" y="172" fill="#3C3E31" font-family="'Hanken Grotesk',sans-serif" font-size="13">Trade, lend, settle privately</text>
+        <text x="712" y="204" fill="#6C6E5E" font-family="'IBM Plex Mono',monospace" font-size="11" letter-spacing="1">cWETH · cSOL</text>
+
+        <line x1="274" y1="124" x2="350" y2="124" stroke="#0E6B57" stroke-width="1.6" marker-end="url(#af)"/>
+        <text x="288" y="115" fill="#0E6B57" font-family="'IBM Plex Mono',monospace" font-size="10.5" letter-spacing="1">lock</text>
+        <line x1="608" y1="124" x2="684" y2="124" stroke="#0E6B57" stroke-width="1.6" marker-end="url(#af)"/>
+        <text x="624" y="115" fill="#0E6B57" font-family="'IBM Plex Mono',monospace" font-size="10.5" letter-spacing="1">mint</text>
+        <line x1="684" y1="176" x2="608" y2="176" stroke="#9A7B3F" stroke-width="1.6" marker-end="url(#ab)"/>
+        <text x="618" y="193" fill="#9A7B3F" font-family="'IBM Plex Mono',monospace" font-size="10.5" letter-spacing="1">burn</text>
+        <line x1="350" y1="176" x2="274" y2="176" stroke="#9A7B3F" stroke-width="1.6" marker-end="url(#ab)"/>
+        <text x="286" y="193" fill="#9A7B3F" font-family="'IBM Plex Mono',monospace" font-size="10.5" letter-spacing="1">release</text>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<section id="security">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="mono">Security model</span>
+      <h2>Built so no single party can break it</h2>
+      <p>The source-chain multisig is the hard boundary. A compromised Canton side can, at worst, mint an unbacked token, which the certificate of reserves catches at once.</p>
+    </div>
+    <div class="grid2">
+      <div class="cell"><div class="ci"><svg viewBox="0 0 28 28"><circle cx="14" cy="14" r="10"/><path d="M14 8v6l4 2"/></svg></div><h3>No single point of failure</h3><p>Threshold M-of-N on both chains, run by independent operators. The system keeps running when one node drops.</p></div>
+      <div class="cell"><div class="ci"><svg viewBox="0 0 28 28"><rect x="5" y="12" width="18" height="12" rx="1"/><path d="M9 12V9a5 5 0 0 1 10 0v3"/></svg></div><h3>Reserves leave only via multisig</h3><p>Funds can be released only by an M-of-N signature on the source chain. No Canton action can drain the vault.</p></div>
+      <div class="cell"><div class="ci"><svg viewBox="0 0 28 28"><path d="M14 4l9 4v5c0 6-4 9.5-9 11-5-1.5-9-5-9-11V8z"/></svg></div><h3>Non-upgradeable vault</h3><p>Fixed contract code, per-transaction and daily caps, a pause switch, and replay guards on every release.</p></div>
+      <div class="cell"><div class="ci"><svg viewBox="0 0 28 28"><path d="M5 14l6 6L23 7"/></svg></div><h3>Verifiable backing</h3><p>Supply and reserves are reconciled continuously, with a public certificate of reserves for every instrument.</p></div>
+      <div class="cell"><div class="ci"><svg viewBox="0 0 28 28"><path d="M10 4h8M14 4v7M7 24h14l-4-7H11z"/></svg></div><h3>Audited before mainnet</h3><p>The vault, the watcher, and the Canton wiring are independently audited, and proof-of-reserve is published, before any asset reaches mainnet.</p></div>
+      <div class="cell"><div class="ci"><svg viewBox="0 0 28 28"><circle cx="14" cy="14" r="3.5"/><path d="M2 14s4-8 12-8 12 8 12 8-4 8-12 8-12-8-12-8z"/></svg></div><h3>Private by default</h3><p>Canton settlement is confidential. Counterparties see only what they need, with permissioning at the ledger level.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="assets">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="mono">Instruments</span>
+      <h2>The register</h2>
+      <p>Crypto first, then reserve assets and securities. Third-party tokens can list through the same rails.</p>
+    </div>
+    <div class="ledger-t">
+      <div class="lhead"><span>Instrument</span><span>Reserve basis</span><span>Custody</span><span>Status</span></div>
+      <div class="lrow"><span class="nm">cWETH</span><span class="ds">Wrapped Ether</span><span class="rz">Safe, EVM</span><span class="st live">Testnet</span></div>
+      <div class="lrow"><span class="nm">cSOL</span><span class="ds">Wrapped SOL</span><span class="rz">Squads, SOL</span><span class="st build">In build</span></div>
+      <div class="lrow"><span class="nm">Tokenized gold</span><span class="ds">Allocated reserve, XAU</span><span class="rz">Vault custodian</span><span class="st road">Roadmap</span></div>
+      <div class="lrow"><span class="nm">Tokenized securities</span><span class="ds">Regulated custodian, allowlisted</span><span class="rz">Transfer agent</span><span class="st road">Roadmap</span></div>
+      <div class="lrow"><span class="nm">Partner assets</span><span class="ds">Third-party issuers, e.g. GGBR</span><span class="rz">Per issuer</span><span class="st part">Onboarding</span></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="split">
+      <div class="panel" id="issuers"><div class="pin">
+        <span class="mono" style="color:var(--brass)">For issuers</span>
+        <h3>List your token on Canton</h3>
+        <p>Bring an asset to a private, institutional settlement layer without building the hard parts. Vectant provides the custody, the registry, and the Canton rewards routing.</p>
+        <div class="checks">
+          <div class="check"><svg viewBox="0 0 24 24"><path d="M4 12l6 6L20 6"/></svg>Threshold custody and proof-of-reserve, run for you</div>
+          <div class="check"><svg viewBox="0 0 24 24"><path d="M4 12l6 6L20 6"/></svg>CIP-56 registry, mint and burn, compliance-as-code</div>
+          <div class="check"><svg viewBox="0 0 24 24"><path d="M4 12l6 6L20 6"/></svg>Canton Coin activity rewards routed to your venues</div>
+          <div class="check"><svg viewBox="0 0 24 24"><path d="M4 12l6 6L20 6"/></svg>Distribution across Canton wallets and venues</div>
+        </div>
+        <a class="btn btn-primary" href="#contact">Request a listing</a>
+      </div></div>
+      <div class="panel"><div class="pin">
+        <span class="mono" style="color:var(--brass)">Ecosystem</span>
+        <h3>Built to trade across Canton</h3>
+        <p>Vectant assets are standard CIP-56 holdings, so they work in any compatible wallet or venue. They are designed to trade and settle across the network from day one.</p>
+        <div class="venues">
+          <span class="vn"><b>Helvex</b> RFQ swaps</span>
+          <span class="vn"><b>Meridiant</b> lending</span>
+          <span class="vn">CIP-56 wallets</span>
+          <span class="vn">DvP settlement</span>
+          <span class="vn">Order books</span>
+          <span class="vn">Structured products</span>
+        </div>
+        <p style="margin-top:22px;font-size:13px;color:var(--faint)">Helvex and Meridiant are sibling products in the same group. Any CIP-56 venue can integrate Vectant assets.</p>
+      </div></div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap">
+    <div class="cta">
+      <canvas id="ctaseal" aria-hidden="true"></canvas>
+      <div class="ci2">
+        <h2>Put your asset on Canton with backing you can prove.</h2>
+        <p>Talk to the team about issuing a wrapped asset, listing a token, or operating a node in the custody set.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#contact">Talk to us
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+          <a class="btn btn-ghost" href="#how">Read how it works</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a class="brand" href="#top">
+          <svg width="26" height="26" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+            <rect x="2.5" y="2.5" width="27" height="27" rx="2" stroke="#0E6B57" stroke-width="1.5"/>
+            <path d="M9.5 11 L16 21.5 L22.5 11" stroke="#0E6B57" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="16" cy="9" r="1.6" fill="#9A7B3F"/>
+          </svg>
+          Vectant
+        </a>
+        <p>Verifiable wrapped assets on the Canton Network. Built by Catalyst Labs, a Dream Capital company.</p>
+      </div>
+      <div class="foot-col"><h4>Platform</h4><a href="#platform">Overview</a><a href="#how">How it works</a><a href="#assets">Assets</a><a href="#security">Security</a></div>
+      <div class="foot-col"><h4>Builders</h4><a href="#issuers">Issuers</a><a href="#contact">Node operators</a><a href="#how">Docs</a></div>
+      <div class="foot-col"><h4>Company</h4><a href="#contact">Contact</a><a href="#contact">Partners</a></div>
+    </div>
+    <p class="disc">Vectant is a product of Catalyst Labs and Dream Capital. Nothing on this site is investment, legal, or tax advice, or an offer to sell or a solicitation to buy any security. Building on or interacting with the Canton Network, wrapped assets, or bridge infrastructure carries risk, including smart-contract, custody, and third-party operator risk. Do your own diligence. Canton Coin rewards and incentives are set by the Canton Network and can change without notice. Vectant is on testnet and is not yet available on mainnet.</p>
+    <p class="copy">© 2026 Catalyst Labs. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  // ---- guilloche rosette generator (layered hypotrochoids) ----
+  function rosette(ctx, cx, cy, outerR, color, lw, layers){
+    ctx.save(); ctx.translate(cx,cy); ctx.lineWidth=lw; ctx.strokeStyle=color;
+    var scale=outerR/14.5; // curve extent peaks near 13.8 units; 14.5 keeps it inside outerR
+    var sets=[[11,4,3.2],[13,5,2.6],[9,4,3.6],[17,6,2.2]];
+    for(var L=0; L<layers; L++){
+      var s=sets[L%sets.length];
+      var R=s[0], r=s[1], d=s[2]*(0.9+0.12*L);
+      var rot=L*0.22;
+      ctx.beginPath();
+      var steps=Math.PI*2*r; // enough to close for integer ratio
+      for(var t=0;t<=steps+0.02;t+=0.03){
+        var k=(R-r);
+        var x=(k*Math.cos(t)+d*Math.cos(k/r*t))*scale;
+        var y=(k*Math.sin(t)-d*Math.sin(k/r*t))*scale;
+        var xr=x*Math.cos(rot)-y*Math.sin(rot);
+        var yr=x*Math.sin(rot)+y*Math.cos(rot);
+        if(t===0)ctx.moveTo(xr,yr);else ctx.lineTo(xr,yr);
+      }
+      ctx.stroke();
+    }
+    ctx.restore();
+  }
+  function fit(cv){
+    var dpr=Math.min(window.devicePixelRatio||1,2);
+    var r=cv.getBoundingClientRect();
+    cv.width=Math.max(1,r.width*dpr); cv.height=Math.max(1,r.height*dpr);
+    var ctx=cv.getContext('2d'); ctx.setTransform(dpr,0,0,dpr,0,0);
+    return {ctx:ctx,w:r.width,h:r.height};
+  }
+  function drawSeal(id,color,lw,layers){
+    var cv=document.getElementById(id); if(!cv)return;
+    var f=fit(cv); if(f.w<2)return;
+    f.ctx.clearRect(0,0,f.w,f.h);
+    rosette(f.ctx,f.w/2,f.h/2,Math.min(f.w,f.h)/2*0.94,color,lw,layers);
+  }
+  function drawBg(){
+    var cv=document.getElementById('bg'); if(!cv)return;
+    var dpr=Math.min(window.devicePixelRatio||1,2);
+    cv.width=window.innerWidth*dpr; cv.height=window.innerHeight*dpr;
+    var ctx=cv.getContext('2d'); ctx.setTransform(dpr,0,0,dpr,0,0);
+    ctx.clearRect(0,0,window.innerWidth,window.innerHeight);
+    var s=Math.min(window.innerWidth,window.innerHeight);
+    rosette(ctx, window.innerWidth*0.82, window.innerHeight*0.26, s*0.42, 'rgba(154,123,63,0.11)', 0.6, 4);
+    rosette(ctx, window.innerWidth*0.10, window.innerHeight*0.88, s*0.30, 'rgba(14,107,87,0.06)', 0.6, 3);
+  }
+  function paint(){
+    drawBg();
+    drawSeal('seal','rgba(154,123,63,0.85)',0.7,4);
+    drawSeal('ctaseal','rgba(14,107,87,0.9)',0.8,4);
+  }
+  if(document.fonts&&document.fonts.ready){document.fonts.ready.then(paint);}
+  window.addEventListener('load',paint);
+  var to; window.addEventListener('resize',function(){clearTimeout(to);to=setTimeout(paint,180);});
+  paint();
+
+  // ---- mobile nav ----
+  var b=document.getElementById('burger'), links=document.querySelector('.nav-links');
+  if(b&&links){
+    b.addEventListener('click',function(){
+      var open=links.style.display==='flex';
+      if(open){links.style.display='none';return;}
+      links.style.display='flex';links.style.position='absolute';links.style.top='100%';links.style.left='0';links.style.right='0';
+      links.style.flexDirection='column';links.style.gap='0';links.style.background='#ECEDE6';
+      links.style.borderBottom='1px solid #CBCCBD';links.style.padding='10px 28px 18px';
+    });
+    links.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){if(window.innerWidth<=600)links.style.display='none';});});
+  }
+})();
+</script>

@@ -1,0 +1,20 @@
+{
+  "name": "Vectant — Proof-backed Canton assets",
+  "short_name": "Vectant",
+  "description": "Wrapped assets on the Canton Network, backed one to one, with public proof of reserves.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#f3f6f4",
+  "theme_color": "#0b8f72",
+  "lang": "en",
+  "categories": ["finance"],
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}
