@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="212" height="48" viewBox="0 0 212 48" fill="none" role="img" aria-label="Vectant">
+  <rect x="4" y="4" width="40" height="40" rx="11" stroke="#F2F2EA" stroke-width="2.4"/>
+  <path d="M14 16 L24 33 L34 16" stroke="#F2F2EA" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="24" cy="13.5" r="2.5" fill="#C7A667"/>
+  <text x="60" y="33" font-family="'Bricolage Grotesque','Hanken Grotesk',system-ui,sans-serif" font-weight="800" font-size="30" letter-spacing="-1" fill="#F2F2EA">Vectant</text>
+</svg>
+<!-- Wordmark set in Bricolage Grotesque ExtraBold. For print/production, convert the <text> to outlines. -->

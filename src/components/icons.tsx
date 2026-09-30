@@ -22,19 +22,19 @@ export function MenuIcon() {
   );
 }
 
+/** Chevron Seal mark — matches vectant-brand-kit/svg/vectant-mark-color.svg */
 export function Logo({ size = 32 }: { size?: number }) {
   return (
-    <svg width={size} height={size} viewBox="0 0 32 32" fill="none" aria-hidden="true">
-      <rect x="2.5" y="2.5" width="27" height="27" rx="2" stroke="#0E6B57" strokeWidth="1.5" />
-      <rect x="6" y="6" width="20" height="20" rx="1" stroke="#9A7B3F" strokeWidth="1" />
+    <svg width={size} height={size} viewBox="0 0 48 48" fill="none" aria-hidden="true" role="img">
+      <rect x="4" y="4" width="40" height="40" rx="11" stroke="#0E6B57" strokeWidth="2.4" />
       <path
-        d="M9.5 11 L16 21.5 L22.5 11"
+        d="M14 16 L24 33 L34 16"
         stroke="#0E6B57"
-        strokeWidth="2.1"
+        strokeWidth="3.4"
         strokeLinecap="round"
         strokeLinejoin="round"
       />
-      <circle cx="16" cy="9" r="1.6" fill="#9A7B3F" />
+      <circle cx="24" cy="13.5" r="2.5" fill="#9A7B3F" />
     </svg>
   );
 }

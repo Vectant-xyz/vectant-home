@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" fill="none" role="img" aria-label="Vectant">
+  <rect x="4" y="4" width="40" height="40" rx="11" stroke="#17180F" stroke-width="2.4"/>
+  <path d="M14 16 L24 33 L34 16" stroke="#17180F" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="24" cy="13.5" r="2.5" fill="#17180F"/>
+</svg>

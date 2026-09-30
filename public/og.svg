@@ -1,12 +1,13 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
-  <rect width="1200" height="630" fill="#101614"/>
-  <circle cx="1040" cy="80" r="280" fill="#0B8F72" opacity="0.35"/>
-  <rect x="72" y="72" width="64" height="64" rx="4" fill="none" stroke="#3DDCB0" stroke-width="3"/>
-  <rect x="80" y="80" width="48" height="48" rx="2" fill="none" stroke="#C4A46A" stroke-width="2"/>
-  <path d="M90 98 L104 122 L118 98" stroke="#3DDCB0" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-  <circle cx="104" cy="92" r="3" fill="#C4A46A"/>
-  <text x="156" y="114" fill="white" font-family="Arial, sans-serif" font-size="36" font-weight="700">Vectant</text>
-  <text x="72" y="280" fill="white" font-family="Arial, sans-serif" font-size="68" font-weight="700">Wrapped assets on Canton,</text>
-  <text x="72" y="364" fill="#3DDCB0" font-family="Arial, sans-serif" font-size="68" font-weight="700">with proof you can check.</text>
-  <text x="72" y="470" fill="#C9D4CE" font-family="Arial, sans-serif" font-size="28">Backed one to one. Public proof of reserves. Redeemable 1:1.</text>
+  <rect width="1200" height="630" fill="#17180F"/>
+  <circle cx="1040" cy="80" r="280" fill="#0E6B57" opacity="0.28"/>
+  <g transform="translate(72, 66) scale(1.333)">
+    <rect x="4" y="4" width="40" height="40" rx="11" stroke="#0E6B57" stroke-width="2.4" fill="none"/>
+    <path d="M14 16 L24 33 L34 16" stroke="#0E6B57" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    <circle cx="24" cy="13.5" r="2.5" fill="#9A7B3F"/>
+  </g>
+  <text x="156" y="114" fill="#ECEDE6" font-family="Arial, sans-serif" font-size="36" font-weight="800">Vectant</text>
+  <text x="72" y="280" fill="#ECEDE6" font-family="Arial, sans-serif" font-size="68" font-weight="700">Wrapped assets on Canton,</text>
+  <text x="72" y="364" fill="#0E6B57" font-family="Arial, sans-serif" font-size="68" font-weight="700">with proof you can check.</text>
+  <text x="72" y="470" fill="#9A7B3F" font-family="Arial, sans-serif" font-size="28" opacity="0.85">Backed one to one. Public proof of reserves. Redeemable 1:1.</text>
 </svg>
