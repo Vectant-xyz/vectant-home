@@ -1,28 +1,4 @@
-const instruments = [
-  { name: "cWETH", basis: "Wrapped Ether", custody: "Safe, EVM", status: "Testnet", tone: "live" },
-  { name: "cSOL", basis: "Wrapped SOL", custody: "Squads, SOL", status: "In build", tone: "build" },
-  {
-    name: "Tokenized gold",
-    basis: "Allocated reserve, XAU",
-    custody: "Vault custodian",
-    status: "Roadmap",
-    tone: "road",
-  },
-  {
-    name: "Tokenized securities",
-    basis: "Regulated custodian, allowlisted",
-    custody: "Transfer agent",
-    status: "Roadmap",
-    tone: "road",
-  },
-  {
-    name: "Partner assets",
-    basis: "Third-party issuers, e.g. GGBR",
-    custody: "Per issuer",
-    status: "Onboarding",
-    tone: "part",
-  },
-];
+import { instruments } from "../content";
 
 export function Register() {
   return (

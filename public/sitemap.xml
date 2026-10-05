@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://vectant.xyz/</loc>
-    <lastmod>2026-09-29</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
-  </url>
+  <url><loc>https://www.vectant.xyz/</loc><lastmod>2026-10-05</lastmod></url>
+  <url><loc>https://www.vectant.xyz/how-it-works</loc><lastmod>2026-10-05</lastmod></url>
+  <url><loc>https://www.vectant.xyz/assets</loc><lastmod>2026-10-05</lastmod></url>
+  <url><loc>https://www.vectant.xyz/security</loc><lastmod>2026-10-05</lastmod></url>
+  <url><loc>https://www.vectant.xyz/proof-of-reserves</loc><lastmod>2026-10-05</lastmod></url>
+  <url><loc>https://www.vectant.xyz/faq</loc><lastmod>2026-10-05</lastmod></url>
+  <url><loc>https://www.vectant.xyz/blog</loc><lastmod>2026-10-05</lastmod></url>
+  <url><loc>https://www.vectant.xyz/blog/what-vectant-wraps</loc><lastmod>2026-10-05</lastmod></url>
+  <url><loc>https://www.vectant.xyz/blog/where-reserves-sit</loc><lastmod>2026-10-05</lastmod></url>
+  <url><loc>https://www.vectant.xyz/blog/how-redemption-works</loc><lastmod>2026-10-05</lastmod></url>
+  <url><loc>https://www.vectant.xyz/blog/instrument-status</loc><lastmod>2026-10-05</lastmod></url>
 </urlset>

@@ -30,7 +30,7 @@ function ListIcon() {
 const articles = [
   {
     title: "Wrapped assets",
-    body: "cWETH and cSOL first, then tokenized gold and securities. Each token is backed one to one, issued as a 10-decimal CIP-56 holding, and settles with Canton's built-in privacy.",
+    body: "cWETH is on testnet and cSOL is in build, then tokenized gold and securities on the roadmap. Each token is designed to be backed one to one and issued as a 10-decimal CIP-56 holding.",
     icon: <GlobeIcon />,
   },
   {
@@ -55,10 +55,10 @@ export function Thesis() {
           </h2>
           <div>
             <p className="thesis-copy">
-              A tokenized asset is only as good as its reserves. Vectant keeps the two jobs separate: reserves stay
-              locked on the source chain under threshold custody, and the wrapped token lives on Canton with
-              settlement finality and privacy. Every instrument carries a public certificate of reserves, so holders
-              and venues can verify exactly what stands behind it.
+              A tokenized asset is only as good as its reserves. Vectant keeps the two jobs separate: reserves are
+              designed to stay locked on the source chain under threshold custody, and the wrapped token lives on
+              Canton. A public certificate of reserves is planned for each instrument before mainnet. None is published
+              today.
             </p>
           </div>
         </div>
@@ -74,7 +74,7 @@ export function Platform() {
         <div className="sec-head">
           <span className="mono">The platform</span>
           <h2>Issue, custody, verify</h2>
-          <p>Mint an asset, hold its reserves under distributed control, and let anyone confirm the backing.</p>
+          <p>Mint an asset and hold its reserves under distributed control. The public backing check comes before mainnet, and it is not available yet.</p>
         </div>
         <div className="arts">
           {articles.map((article) => (

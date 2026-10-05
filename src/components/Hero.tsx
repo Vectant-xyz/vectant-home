@@ -1,11 +1,7 @@
+import { Link } from "react-router";
 import { ArrowIcon } from "./icons";
 
-const attestations = [
-  "1:1 reserves",
-  "M-of-N custody",
-  "Public proof of reserves",
-  "Redeemable on Canton",
-];
+const attestations = ["1:1 by design", "M-of-N custody", "Certificate before mainnet", "On testnet"];
 
 const metrics = [
   { label: "Circulating supply", value: "1,842.5000" },
@@ -22,21 +18,23 @@ export function Hero() {
           <div>
             <p className="mono eyebrow">Proof-backed Canton assets</p>
             <h1 id="hero-title" className="head">
-              Wrapped assets on Canton,
+              Wrapped assets on Canton
+              <br />
               <span className="ital">with proof you can check.</span>
             </h1>
             <p className="lede">
-              Vectant issues wrapped assets backed one to one by reserves held in independent multi-signature
-              custody. Supply is reconciled against reserves continuously, and the proof is public.
+              Vectant issues wrapped assets designed to be backed one to one by reserves in independent
+              multi-signature custody. Vectant is on testnet. A public certificate of reserves and an independent
+              audit are not published yet.
             </p>
             <div className="hero-actions">
-              <a className="btn btn-primary" href="#contact">
+              <Link className="btn btn-primary" to="/#contact">
                 Talk to us
                 <ArrowIcon />
-              </a>
-              <a className="btn btn-ghost" href="#how">
+              </Link>
+              <Link className="btn btn-ghost" to="/how-it-works">
                 See how it works
-              </a>
+              </Link>
             </div>
             <div className="attest">
               {attestations.map((item) => (
@@ -45,14 +43,14 @@ export function Hero() {
             </div>
           </div>
 
-          <aside className="reserve" aria-label="Illustrative reserve status for cWETH on Canton">
+          <aside className="reserve" aria-label="Illustrative reserve card for cWETH. Not a live attestation.">
             <div className="reserve-top">
               <div>
                 <p className="reserve-kicker">Reserve status · illustrative</p>
                 <p className="reserve-name">cWETH</p>
                 <p className="reserve-sub">Wrapped Ether, issued on Canton</p>
               </div>
-              <span className="pill">Reserves verified</span>
+              <span className="pill">Illustrative</span>
             </div>
             <dl className="metrics">
               {metrics.map((metric) => (
@@ -62,7 +60,10 @@ export function Hero() {
                 </div>
               ))}
             </dl>
-            <p className="reserve-note">Figures shown for layout. Attested on-chain via CIP-56.</p>
+            <p className="reserve-note">
+              Figures shown for layout only. Not a live supply, vault balance, or certificate.{" "}
+              <Link to="/proof-of-reserves">Proof of reserves status</Link>
+            </p>
           </aside>
         </div>
       </div>

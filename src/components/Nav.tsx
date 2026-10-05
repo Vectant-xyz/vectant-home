@@ -1,12 +1,13 @@
 import { useState } from "react";
+import { Link, NavLink } from "react-router";
 import { Logo, MenuIcon } from "./icons";
 
 const links = [
-  { href: "#platform", label: "Platform" },
-  { href: "#how", label: "How it works" },
-  { href: "#security", label: "Security" },
-  { href: "#assets", label: "Assets" },
-  { href: "#issuers", label: "Issuers" },
+  { to: "/how-it-works", label: "How it works" },
+  { to: "/security", label: "Security" },
+  { to: "/assets", label: "Assets" },
+  { to: "/faq", label: "FAQ" },
+  { to: "/blog", label: "Blog" },
 ];
 
 export function Nav() {
@@ -15,20 +16,20 @@ export function Nav() {
   return (
     <header className="nav">
       <div className="nav-in">
-        <a className="brand" href="#top" onClick={() => setOpen(false)}>
+        <Link className="brand" to="/" onClick={() => setOpen(false)}>
           <Logo />
           Vectant
-        </a>
+        </Link>
         <nav className={open ? "nav-links open" : "nav-links"} aria-label="Primary">
           {links.map((link) => (
-            <a key={link.href} href={link.href} onClick={() => setOpen(false)}>
+            <NavLink key={link.to} to={link.to} onClick={() => setOpen(false)}>
               {link.label}
-            </a>
+            </NavLink>
           ))}
         </nav>
-        <a className="nav-cta" href="#contact">
+        <Link className="nav-cta" to="/#contact" onClick={() => setOpen(false)}>
           Talk to us
-        </a>
+        </Link>
         <button
           className="burger"
           type="button"

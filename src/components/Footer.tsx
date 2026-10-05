@@ -1,28 +1,32 @@
+import { Link } from "react-router";
 import { Logo } from "./icons";
 
-const columns = [
+const columns: { title: string; links: { href: string; label: string; external?: boolean }[] }[] = [
   {
     title: "Platform",
     links: [
-      { href: "#platform", label: "Overview" },
-      { href: "#how", label: "How it works" },
-      { href: "#assets", label: "Assets" },
-      { href: "#security", label: "Security" },
+      { href: "/how-it-works", label: "How it works" },
+      { href: "/assets", label: "Assets" },
+      { href: "/security", label: "Security" },
+      { href: "/proof-of-reserves", label: "Proof of reserves" },
+      { href: "/#issuers", label: "Issuers" },
     ],
   },
   {
-    title: "Builders",
+    title: "Learn",
     links: [
-      { href: "#issuers", label: "Issuers" },
-      { href: "#contact", label: "Node operators" },
-      { href: "#how", label: "Docs" },
+      { href: "/faq", label: "FAQ" },
+      { href: "/blog", label: "Blog" },
+      { href: "/blog/what-vectant-wraps", label: "What is wrapped" },
+      { href: "/blog/how-redemption-works", label: "Redemption" },
     ],
   },
   {
-    title: "Company",
+    title: "Partners",
     links: [
-      { href: "#contact", label: "Contact" },
-      { href: "#contact", label: "Partners" },
+      { href: "https://www.helvex.cc/", label: "Helvex", external: true },
+      { href: "https://meridiant.xyz/", label: "Meridiant", external: true },
+      { href: "/#contact", label: "Contact" },
     ],
   },
 ];
@@ -33,31 +37,43 @@ export function Footer() {
       <div className="wrap">
         <div className="foot-grid">
           <div className="foot-brand">
-            <a className="brand" href="#top">
+            <Link className="brand" to="/">
               <Logo size={28} />
               Vectant
-            </a>
-            <p>Verifiable wrapped assets on the Canton Network. Built by Catalyst Labs, a Dream Capital company.</p>
+            </Link>
+            <p>Wrapped assets on the Canton Network, on testnet.</p>
           </div>
           {columns.map((column) => (
             <div className="foot-col" key={column.title}>
               <h4>{column.title}</h4>
-              {column.links.map((link) => (
-                <a key={column.title + link.label} href={link.href}>
-                  {link.label}
-                </a>
-              ))}
+              {column.links.map((link) =>
+                link.href.startsWith("/") ? (
+                  <Link key={column.title + link.label} to={link.href}>
+                    {link.label}
+                  </Link>
+                ) : (
+                  <a
+                    key={column.title + link.label}
+                    href={link.href}
+                    rel={link.external ? "noopener noreferrer" : undefined}
+                    target={link.external ? "_blank" : undefined}
+                  >
+                    {link.label}
+                  </a>
+                ),
+              )}
             </div>
           ))}
         </div>
         <p className="disc">
-          Vectant is a product of Catalyst Labs and Dream Capital. Nothing on this site is investment, legal, or tax
-          advice, or an offer to sell or a solicitation to buy any security. Building on or interacting with the Canton
-          Network, wrapped assets, or bridge infrastructure carries risk, including smart-contract, custody, and
-          third-party operator risk. Do your own diligence. Canton Coin rewards and incentives are set by the Canton
-          Network and can change without notice. Vectant is on testnet and is not yet available on mainnet.
+          Nothing on this site is investment,
+          legal, or tax advice, or an offer to sell or a solicitation to buy any security. Building on or interacting
+          with the Canton Network, wrapped assets, or bridge infrastructure carries risk, including smart-contract,
+          custody, and third-party operator risk. Do your own diligence. Canton Coin rewards and incentives are set by
+          the Canton Network and can change without notice. Vectant is on testnet and is not yet available on mainnet.
+          No certificate of reserves and no independent audit are published yet.
         </p>
-        <p className="copy">© 2026 Catalyst Labs. All rights reserved.</p>
+        <p className="copy">© 2026 Vectant. All rights reserved.</p>
       </div>
     </footer>
   );

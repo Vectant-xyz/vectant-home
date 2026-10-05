@@ -1,15 +1,16 @@
+import { Link } from "react-router";
+import { partners } from "../content";
 import { CheckIcon } from "./icons";
 
 const checks = [
-  "Threshold custody and proof-of-reserve, run for you",
+  "Threshold custody, with proof of reserves planned before mainnet",
   "CIP-56 registry, mint and burn, compliance-as-code",
   "Canton Coin activity rewards routed to your venues",
-  "Distribution across Canton wallets and venues",
+  "Designed for distribution across Canton wallets and venues",
 ];
 
-const venues = [
-  { name: "Helvex", detail: " RFQ swaps" },
-  { name: "Meridiant", detail: " lending" },
+const venues: { name: string; detail: string; href?: string }[] = [
+  ...partners.map((partner) => ({ name: partner.name, detail: partner.detail, href: partner.href })),
   { name: "", detail: "CIP-56 wallets" },
   { name: "", detail: "DvP settlement" },
   { name: "", detail: "Order books" },
@@ -37,30 +38,42 @@ export function Audiences() {
                   </div>
                 ))}
               </div>
-              <a className="btn btn-primary" href="#contact">
+              <Link className="btn btn-primary" to="/#contact">
                 Request a listing
-              </a>
+              </Link>
             </div>
           </div>
           <div className="panel">
             <div className="pin">
               <span className="mono kicker">Ecosystem</span>
-              <h3>Built to trade across Canton</h3>
+              <h3>Built to settle on Canton</h3>
               <p>
-                Vectant assets are standard CIP-56 holdings, so they work in any compatible wallet or venue. They are
-                designed to trade and settle across the network from day one.
+                Vectant assets are standard CIP-56 holdings, so a compatible wallet or venue can integrate them.
+                Vectant is partnering with Helvex and Meridiant. That integration is not live yet.
               </p>
               <div className="venues">
-                {venues.map((venue) => (
-                  <span className="vn" key={venue.name + venue.detail}>
-                    {venue.name ? <b>{venue.name}</b> : null}
-                    {venue.detail}
-                  </span>
-                ))}
+                {venues.map((venue) =>
+                  venue.href ? (
+                    <a className="vn" href={venue.href} key={venue.href} rel="noopener noreferrer" target="_blank">
+                      <b>{venue.name}</b> {venue.detail}
+                    </a>
+                  ) : (
+                    <span className="vn" key={venue.detail}>
+                      {venue.detail}
+                    </span>
+                  ),
+                )}
               </div>
               <p className="eco-note">
-                Helvex and Meridiant are sibling products in the same group. Any CIP-56 venue can integrate Vectant
-                assets.
+                <a href="https://www.helvex.cc/" rel="noopener noreferrer" target="_blank">
+                  Helvex
+                </a>{" "}
+                is the permissioned RFQ desk.{" "}
+                <a href="https://meridiant.xyz/" rel="noopener noreferrer" target="_blank">
+                  Meridiant
+                </a>{" "}
+                is isolated-market lending. Vectant assets are not listed
+                on either venue yet.
               </p>
             </div>
           </div>

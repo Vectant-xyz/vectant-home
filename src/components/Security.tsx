@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import { Link } from "react-router";
 
 function ClockIcon() {
   return (
@@ -69,12 +70,12 @@ const cells: { title: string; body: string; icon: ReactNode }[] = [
   },
   {
     title: "Verifiable backing",
-    body: "Supply and reserves are reconciled continuously, with a public certificate of reserves for every instrument.",
+    body: "Supply and reserves are designed to be reconciled continuously. A public certificate for every instrument is planned, and none is published yet.",
     icon: <TickIcon />,
   },
   {
     title: "Audited before mainnet",
-    body: "The vault, the watcher, and the Canton wiring are independently audited, and proof-of-reserve is published, before any asset reaches mainnet.",
+    body: "Before any asset reaches mainnet, the vault, the watcher, and the Canton wiring are planned to be independently audited, and a certificate of reserves published. No audit is published yet.",
     icon: <HourglassIcon />,
   },
   {
@@ -92,8 +93,8 @@ export function Security() {
           <span className="mono">Security model</span>
           <h2>Built so no single party can break it</h2>
           <p>
-            The source-chain multisig is the hard boundary. A compromised Canton side can, at worst, mint an unbacked
-            token, which the certificate of reserves catches at once.
+            The source-chain multisig is the hard boundary. A compromised Canton side could, at worst, mint an unbacked
+            token. A certificate of reserves is meant to catch that, and that certificate is not published yet.
           </p>
         </div>
         <div className="grid2">
@@ -105,6 +106,10 @@ export function Security() {
             </div>
           ))}
         </div>
+        <p className="status-note">
+          <Link to="/proof-of-reserves">Proof of reserves status</Link>
+          : no certificate and no audit report are published.
+        </p>
       </div>
     </section>
   );

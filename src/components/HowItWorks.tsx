@@ -12,12 +12,12 @@ const steps = [
   {
     numeral: "03",
     title: "Verify",
-    body: "Circulating supply is reconciled against locked reserves. The certificate of reserves is public.",
+    body: "Circulating supply is designed to be checked against locked reserves. A public certificate is planned before mainnet and is not published yet.",
   },
   {
     numeral: "04",
     title: "Redeem",
-    body: "Burning the Canton token releases the reserve from the vault, gated by the same M-of-N threshold.",
+    body: "Burning the Canton token does not move the vault by itself. The same M-of-N threshold has to sign the release on the source chain.",
   },
 ];
 

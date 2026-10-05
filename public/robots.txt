@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://vectant.xyz/sitemap.xml
+Sitemap: https://www.vectant.xyz/sitemap.xml

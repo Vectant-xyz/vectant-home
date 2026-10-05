@@ -1,0 +1,30 @@
+# Vectant
+
+> Vectant issues wrapped assets on the Canton Network. The product is on testnet and is not on mainnet. A public certificate of reserves and an independent audit are not published yet.
+
+Preferred host: https://www.vectant.xyz/
+
+## Instruments
+
+- cWETH: wrapped Ether, Safe on EVM, testnet
+- cSOL: wrapped SOL, Squads on Solana, in build
+- Tokenized gold: roadmap
+- Tokenized securities: roadmap
+- Partner assets: onboarding, not live
+
+## Pages
+
+- [Home](https://www.vectant.xyz/): product summary
+- [How it works](https://www.vectant.xyz/how-it-works): lock, mint, redeem
+- [Assets](https://www.vectant.xyz/assets): instrument register
+- [Security](https://www.vectant.xyz/security): custody design
+- [Proof of reserves](https://www.vectant.xyz/proof-of-reserves): not published yet
+- [FAQ](https://www.vectant.xyz/faq): short answers
+- [Blog](https://www.vectant.xyz/blog): the same topics in longer notes
+
+## Partners
+
+Vectant is partnering with these venues. Vectant assets are not integrated on them yet.
+
+- [Helvex](https://www.helvex.cc/): permissioned RFQ desk on Canton
+- [Meridiant](https://meridiant.xyz/): isolated-market lending on Canton
