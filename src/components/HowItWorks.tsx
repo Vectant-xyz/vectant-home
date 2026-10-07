@@ -116,7 +116,7 @@ export function HowItWorks() {
               Trade, lend, settle privately
             </text>
             <text x="712" y="204" fill="#5C6761" fontFamily="Outfit,sans-serif" fontSize="11" letterSpacing="1">
-              cWETH · cSOL
+              vETH · vSOL
             </text>
 
             <line x1="274" y1="124" x2="350" y2="124" stroke="#0B8F72" strokeWidth="1.6" markerEnd="url(#af)" />

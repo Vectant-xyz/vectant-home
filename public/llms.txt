@@ -6,8 +6,8 @@ Preferred host: https://www.vectant.xyz/
 
 ## Instruments
 
-- cWETH: wrapped Ether, Safe on EVM, testnet
-- cSOL: wrapped SOL, Squads on Solana, in build
+- vETH: wrapped Ether, Safe on EVM, testnet
+- vSOL: wrapped SOL, Squads on Solana, in build
 - Tokenized gold: roadmap
 - Tokenized securities: roadmap
 - Partner assets: onboarding, not live

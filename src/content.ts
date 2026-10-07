@@ -27,8 +27,8 @@ export type Instrument = {
 };
 
 export const instruments: Instrument[] = [
-  { name: "cWETH", basis: "Wrapped Ether", custody: "Safe, EVM", status: "Testnet", tone: "live" },
-  { name: "cSOL", basis: "Wrapped SOL", custody: "Squads, SOL", status: "In build", tone: "build" },
+  { name: "vETH", basis: "Wrapped Ether", custody: "Safe, EVM", status: "Testnet", tone: "live" },
+  { name: "vSOL", basis: "Wrapped SOL", custody: "Squads, SOL", status: "In build", tone: "build" },
   {
     name: "Tokenized gold",
     basis: "Allocated reserve, XAU",
@@ -61,7 +61,7 @@ export const faq: FaqItem[] = [
   {
     question: "What does Vectant wrap?",
     answer:
-      "Vectant issues wrapped assets as CIP-56 holdings on the Canton Network. [cWETH](/assets) (wrapped Ether) is on testnet. cSOL (wrapped SOL) is in build. Tokenized gold and tokenized securities are on the roadmap. Third-party tokens can list through the same rails, and none of those listings are live yet.",
+      "Vectant issues wrapped assets as CIP-56 holdings on the Canton Network. [vETH](/assets) (wrapped Ether) is on testnet. vSOL (wrapped SOL) is in build. Tokenized gold and tokenized securities are on the roadmap. Third-party tokens can list through the same rails, and none of those listings are live yet.",
   },
   {
     question: "Where do the reserves sit?",
@@ -76,7 +76,7 @@ export const faq: FaqItem[] = [
   {
     question: "What is the current status?",
     answer:
-      "Vectant is on testnet and is not on mainnet. cWETH is on testnet, cSOL is in build, and gold and securities are on the roadmap. The figures on the homepage reserve card are a layout sample, not a live attestation. See [instrument status](/blog/instrument-status).",
+      "Vectant is on testnet and is not on mainnet. vETH is on testnet, vSOL is in build, and gold and securities are on the roadmap. The figures on the homepage reserve card are a layout sample, not a live attestation. See [instrument status](/blog/instrument-status).",
   },
   {
     question: "Is proof of reserves public?",
@@ -108,11 +108,11 @@ export const posts: Post[] = [
   {
     slug: "what-vectant-wraps",
     title: "What Vectant wraps",
-    description: "cWETH is on testnet. cSOL is in build. Tokenized gold and securities are on the roadmap.",
+    description: "vETH is on testnet. vSOL is in build. Tokenized gold and securities are on the roadmap.",
     date: "2026-10-05",
     paragraphs: [
-      "Vectant issues wrapped assets as CIP-56 holdings on the Canton Network. The first instrument is cWETH, wrapped Ether, with reserves designed to sit in a Safe on EVM. It is on testnet.",
-      "cSOL, wrapped SOL, is in build. Its reserves are designed to sit in Squads on Solana. Tokenized gold and tokenized securities are on the roadmap and are not available to issue.",
+      "Vectant issues wrapped assets as CIP-56 holdings on the Canton Network. The first instrument is vETH, wrapped Ether, with reserves designed to sit in a Safe on EVM. It is on testnet.",
+      "vSOL, wrapped SOL, is in build. Its reserves are designed to sit in Squads on Solana. Tokenized gold and tokenized securities are on the roadmap and are not available to issue.",
       "Third-party tokens can be listed through the same rails. The register names GGBR as an onboarding example, not a live listing. The current list is the [asset register](/assets).",
     ],
     related: [
@@ -156,10 +156,10 @@ export const posts: Post[] = [
   {
     slug: "instrument-status",
     title: "Instrument status",
-    description: "Vectant is on testnet. cWETH is in test, cSOL is in build, and proof of reserves is not published.",
+    description: "Vectant is on testnet. vETH is in test, vSOL is in build, and proof of reserves is not published.",
     date: "2026-10-05",
     paragraphs: [
-      "Vectant is not on mainnet. cWETH is on testnet. cSOL is in build. Tokenized gold and tokenized securities are on the roadmap. Partner assets, including the GGBR example, are marked onboarding.",
+      "Vectant is not on mainnet. vETH is on testnet. vSOL is in build. Tokenized gold and tokenized securities are on the roadmap. Partner assets, including the GGBR example, are marked onboarding.",
       "The numbers on the homepage reserve card are a layout sample. They are not a live supply, a vault balance, or a certificate. [Proof of reserves](/proof-of-reserves) is the page that says what is and is not published.",
       "Vectant is partnering with [Helvex](https://www.helvex.cc/), the permissioned RFQ desk, and [Meridiant](https://meridiant.xyz/), isolated-market lending on Canton. Those products have their own sites. Vectant assets are not integrated on them yet.",
     ],
@@ -206,7 +206,7 @@ export const routes: RouteMeta[] = [
     title: "Vectant instruments and status | Vectant",
     heading: "What Vectant wraps",
     description:
-      "cWETH is on testnet. cSOL is in build. Tokenized gold and securities are on the roadmap. Vectant is not on mainnet.",
+      "vETH is on testnet. vSOL is in build. Tokenized gold and securities are on the roadmap. Vectant is not on mainnet.",
     kind: "page",
   },
   {

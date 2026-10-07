@@ -43,11 +43,11 @@ export function Hero() {
             </div>
           </div>
 
-          <aside className="reserve" aria-label="Illustrative reserve card for cWETH. Not a live attestation.">
+          <aside className="reserve" aria-label="Illustrative reserve card for vETH. Not a live attestation.">
             <div className="reserve-top">
               <div>
                 <p className="reserve-kicker">Reserve status · illustrative</p>
-                <p className="reserve-name">cWETH</p>
+                <p className="reserve-name">vETH</p>
                 <p className="reserve-sub">Wrapped Ether, issued on Canton</p>
               </div>
               <span className="pill">Illustrative</span>

@@ -30,7 +30,7 @@ function ListIcon() {
 const articles = [
   {
     title: "Wrapped assets",
-    body: "cWETH is on testnet and cSOL is in build, then tokenized gold and securities on the roadmap. Each token is designed to be backed one to one and issued as a 10-decimal CIP-56 holding.",
+    body: "vETH is on testnet and vSOL is in build, then tokenized gold and securities on the roadmap. Each token is designed to be backed one to one and issued as a 10-decimal CIP-56 holding.",
     icon: <GlobeIcon />,
   },
   {
